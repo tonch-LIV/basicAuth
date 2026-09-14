@@ -39,3 +39,4 @@ flowchart TD
   - Signup hashes the password through a model hook before database storage.
   - Signin delegates credential validation to middleware and a model method.
   - Successful and unsuccessful outcomes return through Express.
+- created `/src/server.js`.
