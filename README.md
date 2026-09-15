@@ -40,3 +40,6 @@ flowchart TD
   - Signin delegates credential validation to middleware and a model method.
   - Successful and unsuccessful outcomes return through Express.
 - created `/src/server.js`.
+- extracted user schema and authen rules, 'moved password handling out of route code, allowing users created through sequelize to automatically get same protection.
+- created `src/auth/models/index.js` for Sequelize config, and user and db exportation.
+- created `src/auth/middleware/basic.js`
