@@ -42,4 +42,6 @@ flowchart TD
 - created `/src/server.js`.
 - extracted user schema and authen rules, 'moved password handling out of route code, allowing users created through sequelize to automatically get same protection.
 - created `src/auth/models/index.js` for Sequelize config, and user and db exportation.
-- created `src/auth/middleware/basic.js`
+- created `src/auth/middleware/basic.js`.
+- created `src/auth/router.js`.
+- created error handlers `src/middleware/404.js` and `src/middleware/500.js`.

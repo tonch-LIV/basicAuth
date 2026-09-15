@@ -35,7 +35,7 @@ async function basicAuth(req, res, next) {
 
     next();
   } catch (error) {
-    next(new Error('Invalid Login'))
+    next(new Error('Invalid Login'));
   }
 }
 
