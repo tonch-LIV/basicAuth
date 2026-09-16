@@ -1,7 +1,12 @@
 'use strict';
 
 const express = require('express');
-const app = require('cors');
+
+const authRouter = require('./auth/router.js');
+const handleNotFound = require('./middleware/404.js');
+const handleServerError = require('./middleware/500.js');
+
+const cors = require('cors');
 
 // creates express app
 const app = express();
@@ -14,6 +19,11 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true,
 }));
+
+app.use(authRouter);
+
+app.use(handleNotFound); // catches requests that dont match routes
+app.use(handleServerError);
 
 function start(port) {
   return app.listen(port, () => {

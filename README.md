@@ -45,3 +45,14 @@ flowchart TD
 - created `src/auth/middleware/basic.js`.
 - created `src/auth/router.js`.
 - created error handlers `src/middleware/404.js` and `src/middleware/500.js`.
+- imported `authRouter`, `handleNotFound`, and `handleServerError` to `server.js`.
+- fixed `cors` variabe name; `server.js`; which i just learned might not be needed at all, since 
+  - there is no frontend,
+  - is middleware, but not generally required for Express mw / basic authen..
+- created `~/index.js`; which;
+  - loads `env` variables,
+  - imports `db` / `sequelize` connection from `./src/auth/models/index.js`,
+    - `start()` from `./src/server.js`,
+  - creates / syncs db tables,
+  - and begins listening after db is ready
+  - lets Supertestimport express `app` w/o postgresql / starting deployed server 
