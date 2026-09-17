@@ -60,4 +60,5 @@ flowchart TD
 - added supertest (from root); `npm install --save-dev supertest`
 - created `/__tests__/server.test.js` for route integration testing.
 - created `basics.test.js` for middleware testing.
-- 
+- import and paths; `server.test.js`.
+- relocated `basic.test.js` to `~/src/auth/middleware/`.

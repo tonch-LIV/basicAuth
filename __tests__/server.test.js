@@ -3,8 +3,7 @@
 const supertest = require('supertest');
 
 const { app } = require('../src/server.js');
-const { db, users } = require('../auth/models/index.js');
-const { response } = require('express');
+const { db, users } = require('../src/auth/models/index.js');
 
 const request = supertest(app);
 
