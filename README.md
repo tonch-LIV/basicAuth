@@ -56,3 +56,8 @@ flowchart TD
   - creates / syncs db tables,
   - and begins listening after db is ready
   - lets Supertestimport express `app` w/o postgresql / starting deployed server 
+- changed project entry point from `app.js` (supplied starter) to `index.js` (modular entry); `package.json`
+- added supertest (from root); `npm install --save-dev supertest`
+- created `/__tests__/server.test.js` for route integration testing.
+- created `basics.test.js` for middleware testing.
+- 
