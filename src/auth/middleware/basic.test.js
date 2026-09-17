@@ -31,7 +31,7 @@ describe('Basic Authen middleware', () => {
     await basicAuth(req, {}, next);
 
     expect(req.user.username).toBe('middleware-user');
-    expect(next).toHavebeenCalledWith();
+    expect(next).toHaveBeenCalledWith();
   });
 
   test('passes Invalid Login to next for invalid credentials', async () => {
@@ -52,7 +52,7 @@ describe('Basic Authen middleware', () => {
 
     await basicAuth(req, {}, next);
 
-    expect(next).toHavebeenCalledWith(expect.any(Error));
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
     expect(next.mock.calls[0][0].message).toBe('Invalid Login');
   });
 });

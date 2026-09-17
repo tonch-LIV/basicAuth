@@ -19,7 +19,7 @@ afterAll(async () => {
 describe('Authentication server', () => {
   // unknown routes reach; 404
   test('returns 404 for an unknown route', async () => {
-    const response = await request.get('./missing');
+    const response = await request.get('/missing');
 
     expect(response.status).toBe(404);
     expect(response.body.message).toBe('Not Found');
@@ -40,7 +40,8 @@ describe('Authentication server', () => {
 
     expect(response.status).toBe(201);
     expect(response.body.username).toBe('json-user');
-    expect(storedUser.body.password).not.toBe('secret');
+    expect(response.body.password).toBeUndefined();
+    expect(storedUser.password).not.toBe('secret');
   });
 
   // form data accepted by /signup; 201
@@ -57,7 +58,7 @@ describe('Authentication server', () => {
     expect(response.body.username).toBe('form-user');
   });
 
-  // Basic Authen accepted by /signup; 201
+  // Basic Authen accepted by /signin; 200
   test('signs in a user with valid Basic Authen', async () => {
     await request
       .post('/signup')
@@ -72,6 +73,8 @@ describe('Authentication server', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.user.username).toBe('signin-user');
+    expect(response.body.user.password).toBeUndefined();
+
   });
 
   // invalid credentials reach; 500

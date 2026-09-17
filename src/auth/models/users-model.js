@@ -15,6 +15,13 @@ function usersModel(sequelize, DataTypes) {
     },
   });
 
+  // copies fields for response; removes password from copy
+  User.prototype.toJSON = function () {
+    const user = { ...this.get({ plain: true }) };
+    delete user.password;
+    return user;
+  };
+
   // replaces plain-text with bcrypt hash before Sequelize inserts record
   User.beforeCreate(async (user) => {
     user.password = await bcrypt.hash(user.password, 10);

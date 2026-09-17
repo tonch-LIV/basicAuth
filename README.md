@@ -30,6 +30,18 @@ flowchart TD
     M --> A
 ```
 
+## Running and testing locally
+
+Create a PostgreSQL database and set `DATABASE_URL` in a local `.env` file using `.env.example` as a guide. Run `npm start` to start the server. Run `npm test -- --runInBand` to run the automated tests.
+
+## AI assistance
+
+Codex was used as a programming assistive tool while refactoring the starter server. It suggested the module structure, example implementations for the authentication model, middleware, routes, and error handlers, and initial Jest/Supertest tests. I manually entered and revised the code, reviewed errors with Codex, and ran the tests and HTTP requests myself.
+
+A relevant excerpt from my initial prompt was:
+
+> “The goal is to refactor the starter into a modular Express authentication server with PostgreSQL, Sequelize, Basic Authentication, signup/signin routes, error middleware, Jest/Supertest tests, and a Mermaid UML in README.md.”
+
 ## Changelog
 
 - imported starter code from class repo.
@@ -62,3 +74,11 @@ flowchart TD
 - created `basics.test.js` for middleware testing.
 - import and paths; `server.test.js`.
 - relocated `basic.test.js` to `~/src/auth/middleware/`.
+- ran `npm install --save-dev jest@29.7.0` due to dependency and tool compatability error that occured when running `npm test`; tests passed after dependency was updated.
+- created `.env`.
+- curl responses for `/signup` and `/signin` expose hashed password; removed password from response by:
+  - implementing `toJSON()` in `src/auth/models/users-model.js`,
+  - editing assertions in `__tests__/server.test.js`.
+- README editing and notes on testing and Codex.
+- deleted starter file `app.js`.
+- clean up of `package.json` and unused/unneeded dependencies.
