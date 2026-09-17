@@ -1,6 +1,10 @@
 # basicAuth
 401 /// module_2 /// lab_06 /// authentication
 
+## Submission
+
+- Pull request: [dev into main](https://github.com/tonch-LIV/basicAuth/pull/1)
+
 ## UML
 
 ```mermaid
