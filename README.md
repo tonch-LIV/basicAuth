@@ -42,45 +42,11 @@ A relevant excerpt from my initial prompt was:
 
 > “The goal is to refactor the starter into a modular Express authentication server with PostgreSQL, Sequelize, Basic Authentication, signup/signin routes, error middleware, Jest/Supertest tests, and a Mermaid UML in README.md.”
 
-## Changelog
+## Implementation and verification
 
-- imported starter code from class repo.
-- created missing `package-lock.json` file with `npm install`.
-- created `.env.example`.
-- added `UML` as mermaid to document both required flows:
-  - Signup hashes the password through a model hook before database storage.
-  - Signin delegates credential validation to middleware and a model method.
-  - Successful and unsuccessful outcomes return through Express.
-- created `/src/server.js`.
-- extracted user schema and authen rules, 'moved password handling out of route code, allowing users created through sequelize to automatically get same protection.
-- created `src/auth/models/index.js` for Sequelize config, and user and db exportation.
-- created `src/auth/middleware/basic.js`.
-- created `src/auth/router.js`.
-- created error handlers `src/middleware/404.js` and `src/middleware/500.js`.
-- imported `authRouter`, `handleNotFound`, and `handleServerError` to `server.js`.
-- fixed `cors` variabe name; `server.js`; which i just learned might not be needed at all, since 
-  - there is no frontend,
-  - is middleware, but not generally required for Express mw / basic authen..
-- created `~/index.js`; which;
-  - loads `env` variables,
-  - imports `db` / `sequelize` connection from `./src/auth/models/index.js`,
-    - `start()` from `./src/server.js`,
-  - creates / syncs db tables,
-  - and begins listening after db is ready
-  - lets Supertestimport express `app` w/o postgresql / starting deployed server 
-- changed project entry point from `app.js` (supplied starter) to `index.js` (modular entry); `package.json`
-- added supertest (from root); `npm install --save-dev supertest`
-- created `/__tests__/server.test.js` for route integration testing.
-- created `basic.test.js` for middleware testing.
-- import and paths; `server.test.js`.
-- relocated `basic.test.js` to `~/src/auth/middleware/`.
-- ran `npm install --save-dev jest@29.7.0` due to dependency and tool compatability error that occured when running `npm test`; tests passed after dependency was updated.
-- created `.env`.
-- curl responses for `/signup` and `/signin` expose hashed password; removed password from response by:
-  - implementing `toJSON()` in `src/auth/models/users-model.js`,
-  - editing assertions in `__tests__/server.test.js`.
-- README editing and notes on testing and Codex.
-- deleted starter file `app.js`.
-- clean up of `package.json` and unused/unneeded dependencies.
-- removed SQLite warning from test runs; `src/auth/models/index.js`,
-  - ran `npm test -- --runInBand` and confirmed `DeprecationWarning` was no longer coming up.
+- Refactored the starter into a separate entry point, Express app, authentication router, user model, and middleware.
+- Signup accepts JSON or form data, hashes passwords before storage, and returns 201.
+- Signin validates Basic Authentication and returns the authenticated user with 200.
+- User responses omit the stored password hash.
+- Automated testing: 7 Jest/Supertest tests passed with `npm test -- --runInBand`.
+- Manual PostgreSQL testing: `/signup` returned 201 and `/signin` returned 200.
