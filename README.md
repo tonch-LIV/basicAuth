@@ -71,7 +71,7 @@ A relevant excerpt from my initial prompt was:
 - changed project entry point from `app.js` (supplied starter) to `index.js` (modular entry); `package.json`
 - added supertest (from root); `npm install --save-dev supertest`
 - created `/__tests__/server.test.js` for route integration testing.
-- created `basics.test.js` for middleware testing.
+- created `basic.test.js` for middleware testing.
 - import and paths; `server.test.js`.
 - relocated `basic.test.js` to `~/src/auth/middleware/`.
 - ran `npm install --save-dev jest@29.7.0` due to dependency and tool compatability error that occured when running `npm test`; tests passed after dependency was updated.
@@ -82,3 +82,5 @@ A relevant excerpt from my initial prompt was:
 - README editing and notes on testing and Codex.
 - deleted starter file `app.js`.
 - clean up of `package.json` and unused/unneeded dependencies.
+- removed SQLite warning from test runs; `src/auth/models/index.js`,
+  - ran `npm test -- --runInBand` and confirmed `DeprecationWarning` was no longer coming up.
